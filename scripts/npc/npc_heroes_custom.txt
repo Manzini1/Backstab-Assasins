@@ -1,0 +1,162 @@
+"DOTAHeroes"
+{
+  "npc_dota_hero_antimage_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_antimage"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+  }
+  
+  "npc_dota_hero_doom_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_doom_bringer"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+
+ 
+  }
+   "npc_dota_hero_doom_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_abyssal_underlord"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+
+ 
+  }
+   "npc_dota_hero_doom_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_chaos_knight"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+
+ 
+  }
+   "npc_dota_hero_doom_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_broodmother"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+
+ 
+  }
+    "npc_dota_hero_mort_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_phantom_assasin"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+
+ 
+  }
+  "npc_dota_hero_stalker_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_night_stalker"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   
+
+ 
+  }
+   "npc_dota_hero_bs_new"{
+  
+   "override_hero"     "npc_dota_hero_bloodseeker"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+ 
+  }
+   
+  "npc_ember_new"{
+  
+   "override_hero"     "npc_dota_hero_ember_spirit"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+  }
+  "npc_nyx_new"{
+  
+   "override_hero"     "npc_dota_hero_nyx_assasin"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+  }
+  "npc_riki_new"{
+  
+   "override_hero"     "npc_dota_hero_riki"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+  }
+  "npc_gondar_new"{
+  
+   "override_hero"     "npc_dota_hero_bounty_hunter"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   "Ability5"  ""
+   "Ability6" ""
+   "Ability7" ""
+  }
+  "npc_dota_hero_doom_new"
+  {
+    
+    "override_hero"     "npc_dota_hero_dragon_knight"
+    "Ability1"        "cloak_and_dagger_datadriven" 
+    "Ability2"				"vengefulspirit_wave_of_terror_lua"	
+    "Ability3"        "techies_stasis_trap_datadriven" 
+   "Ability4" "terrorblade_conjure_image_datadriven"
+   
+
+ 
+  }
+  	
+}

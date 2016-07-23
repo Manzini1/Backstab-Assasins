@@ -1,0 +1,757 @@
+
+// Dota Abilities Override File
+"DOTAAbilities"
+{
+  "Version"   "1"
+	"pendulum_trap"
+	{
+		"BaseClass"           			"ability_lua"
+		"ScriptFile"					"pendulum_trap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"	
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"			   
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"60000"
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+			
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.0"	// Modifier just delays damage
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"10000"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cast_range_scepter"		"60000"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage_delay"				"0"
+			}
+		}
+	}
+	"terrorblade_conjure_image_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"copies"
+		"MaxLevel" "1"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.5"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"illusion_duration"					"5.0"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"illusion_outgoing_damage"			"-40.0"		
+			}
+			"03"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"illusion_outgoing_tooltip"			"60.0"
+			}
+			"04"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"illusion_incoming_damage"			"3225.0"
+			}
+			"05"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"illusion_incoming_damage_total_tooltip"			"4225.0"
+			}			
+		}
+	
+			
+		
+		"Modifiers"
+		{	
+			"modifier_item_truesight"
+			{
+				"IsHidden"		"1"
+				"IsDebuff"		"1"
+				"Duration"		"5.25"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}
+			"modifier_item_truesight_aura"
+			{
+				"IsHidden"		"0"
+				"Duration"		"10"
+				"ThinkInterval"		"0.25"
+				"OnIntervalThink"
+				{
+					"ApplyModifier"
+					{
+						"OnCreated"
+						{
+							"Center"	"CASTER"
+							"Radius"	"125"
+							"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" ""Aura"          	"modifier_item_truesight"
+							"Aura_Radius"   	"300"
+							"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
+							"Aura_ApplyToCaster" "1""
+						}
+							
+					}
+						
+						"ModifierName"		"modifier_item_truesight"
+				}
+			}
+		}
+			
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+		}
+	
+		"OnSpellStart"
+		
+		{	"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_truesight_aura"
+				"Target"		"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Terrorblade.ConjureImage"
+				"Target"			"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"		"conjure_image.lua"
+				"Function"			"ConjureImage"
+			}
+		}
+	}
+	
+	
+	
+	"techies_stasis_trap_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"trap2"
+		"AOERadius"						"%activation_radius"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"		
+			//"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+			//"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+			//"particle"		"particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+			//"particle"		"particles/status_fx/status_effect_techies_stasis.vpcf"
+			//"model"			"models/heroes/techies/fx_techiesfx_stasis.vmdl"	
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"150"
+		"AbilityCastPoint"				"1.0"
+		"MaxLevel" "1"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{		
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"activation_radius"			"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"explode_delay"			"0.5"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"stun_radius"				"450"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"stun_duration"				"4"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"activation_time"			"1.5"
+			}	
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"fade_time"					"4.0"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"360.0"
+			}
+			// Extra
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"vision_radius"				"300"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"vision_duration"			"360.0"
+			}
+		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Techies.StasisTrap.Plant"
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+				"EffectAttachType"  "start_at_customorigin"
+				"TargetPoint"            "POINT"
+	
+				"ControlPoints"
+				{
+					"01"	"POINT"
+				}
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"stasis_trap.lua"
+				"Function"		"StasisTrapPlant"
+				"Target"		"POINT"
+				"modifier_stasis_trap"	"modifier_stasis_trap_datadriven"
+				"modifier_tracker"		"modifier_stasis_trap_tracker_datadriven"
+				"modifier_stasis_trap_invisibility"	"modifier_stasis_trap_invisibility_datadriven"
+				"modifier_stasis_reveal" "modifier_stasis_reveal_datadriven"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_stasis_trap_datadriven"
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+	
+				"OnCreated"
+				{
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+						"EffectAttachType"  "start_at_customorigin"
+	
+						"ControlPointEntities"
+						{
+							"TARGET"	"attach_hitloc"
+							"TARGET"	"attach_hitloc"
+							"TARGET"	"attach_hitloc"
+							"TARGET"	"attach_hitloc"
+						}
+					}
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_stasis_trap_tracker_datadriven"
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+	
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"stasis_trap.lua"
+						"Function"		"StasisTrapTracker"
+						"modifier_trigger"	"modifier_stasis_trap_trigger_datadriven"
+					}
+				}
+			}
+			 
+
+               
+	
+			"modifier_stasis_trap_invisibility_datadriven"
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+	
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_stasis_trap_trigger_datadriven"
+			{
+				"OnCreated"
+				{
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Radius" 	"%stun_radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					
+						"Action"    
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_stasis_trap_stun_datadriven"
+								"ModifierName"  "modifier_stasis_reveal_datadriven"
+								"Target" 		"TARGET"
+								"Duration"		"%stun_duration"
+							}
+							
+						}
+					}
+	
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+						"EffectAttachType"  "follow_hitloc"
+						"Target"            "TARGET"
+	
+						"ControlPoints"
+						{
+							"01"	"%stun_radius 0 0"
+						}
+					}
+	
+					"CreateThinker"
+					{
+						"ModifierName"	"modifier_stasis_trap_thinker"
+						"Target" 		"TARGET"
+					}
+	
+					"RunScript"
+					{
+						"ScriptFile"	"stasis_trap.lua"
+						"Function"		"StasisTrapRemove"
+					}
+				}
+			}
+		"modifier_stasis_trap_datadriven"{
+			"States"
+				{	
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_DISABLED"
+					}
+		}
+			"modifier_stasis_trap_stun_datadriven"
+			{
+				"IsDebuff"	"1"
+	
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_techies_stasis.vpcf"
+				"StatusEffectPriority"	"1"
+				"Priority"					"MODIFIER_PRIORITY_ULTRA"
+				"States"
+				{	
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_DISABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+			"modifier_stasis_trap_thinker"
+			{
+				"Duration"	"0.03"
+	
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Techies.StasisTrap.Stun"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+		}
+	}
+	"cloak_and_dagger_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityTextureName"			"invi"
+		"ScriptFile"					"cloak_and_dagger.lua"
+		"MaxLevel" "1"
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		 {
+		  "soundfile"   "sounds/laughbs"
+		  "soundfile"	"sounds/weapons/hero/riki/riki_attack1.vsnd"
+		  "particle"	"particles/units/heroes/hero_riki/riki_backstab.vpcf"
+		  "particle"	"particles/generic_hero_status/status_invisibility_start.vpcf"
+		 
+		 }
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"fade_time"					"5.0"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"agility_damage"			"500"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"backstab_angle"			"105"
+		}
+	}
+	
+		"Modifiers"
+		{
+			"modifier_invisibility_fade_datadriven"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				
+				"Duration"	"%fade_time"
+				"EffectName"	"particles/generic_hero_status/status_invisibility_start.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"OnDestroy"
+				{
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_permanent_invisibility_datadriven"
+					}
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_invisible"
+					}
+				}  
+			}
+			"modifier_backstab_datadriven"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+	
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"cloak_and_dagger.lua"
+						"Function"			"CheckBackstab"
+						"particle"			"particles/units/heroes/hero_riki/riki_backstab.vpcf"
+						"sound"				"laughbs"
+						
+					}
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_permanent_invisibility_datadriven"
+					}
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_invisible"
+					}
+					"ApplyModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_invisibility_fade_datadriven"
+					}
+				}
+			}
+	
+			"modifier_permanent_invisibility_datadriven"	
+			{	
+				"IsHidden"	"1"
+				
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED" 
+				}
+	
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+						"ModifierName"	"modifier_invisible"
+					}
+				}
+			}
+		}
+	}
+	
+	"vengefulspirit_wave_of_terror_lua"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"BaseClass"					"ability_lua"
+		"AbilityTextureName"				"olho1"
+		"ScriptFile"					"vengefulspirit_wave_of_terror_lua"
+		"MaxLevel" "1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1400"
+		"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"15"
+		"AbilityDuration"				"15"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"40 40 40 40"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+			"Modifiers"
+		{
+			"modifier_item_truesight_aura"
+			{
+				"IsHidden"		"0"
+				"Duration"		"10"
+				"ThinkInterval"		"0.25"
+				"OnIntervalThink"
+				{
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"125"
+							"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+						}
+						"ModifierName"		"modifier_item_truesight"
+					}
+				}
+			}
+			"modifier_item_truesight"
+			{
+				"IsHidden"		"1"
+				"IsDebuff"		"1"
+				"Duration"		"0.25"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}
+		}
+		"modifier_reveal"
+			{
+				
+				"Priority"					"MODIFIER_PRIORITY_ULTRA"
+				"States"
+				{	
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_DISABLED"
+					
+				}
+			}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"wave_speed"		"2000.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"wave_width"		"300"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"tooltip_duration"	"15"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_aoe"		"200"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"vision_duration"	"5"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"wave_damage"			"0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"true_sight_radius"		"750"
+			}
+
+		}
+		"OnSpellStart"
+		{	
+		"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_truesight_aura"
+				"Target"		"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_VengefulSpirit.WaveOfTerror"
+				"Target" 		"CASTER"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"wave_of_terror.lua"
+				"Function"		"WaveOfTerrorVision"
+				"Target"		"POINT"
+				"wave_particle"	"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"0"
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_wave_of_terror_datadriven"
+				"Target" 		"TARGET"
+				"Duration"		"%tooltip_duration"
+			}
+			"States"{
+			"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_DISABLED"
+			}
+	
+			"Damage"
+			{
+				"Target"		"TARGET"
+				"Type"			"DAMAGE_TYPE_PURE"
+				"Damage"		"%AbilityDamage"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_wave_of_terror_datadriven"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+		
+				"EffectName"		"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror_recipient.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Priority" "MODIFIER_PRIORITY_ULTRA"
+				"Properties"
+				{
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_DISABLED"
+				}
+				"States"{
+				"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}
+		}
+	}
+	
+	
+	
+}
+
+
+
+
